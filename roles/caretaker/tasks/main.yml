@@ -1,0 +1,30 @@
+---
+
+#### Get the archived config ####
+- name: ENSURE THAT A LOCAL ARCHIVE PATH EXISTS
+  file:
+    path: "{{ role_path }}/files/archived_configs"
+    state: directory
+    mode: 0755
+  delegate_to: localhost
+  run_once: yes
+
+- name: GATHER THE ARCHIVED CONFIGS
+  git:
+    repo: "{{ sot_repo }}"
+    clone: yes
+    dest: "{{ role_path }}/files/archived_configs"
+  delegate_to: localhost
+  run_once: yes
+
+#### Now get the running config ####
+- name: ENSURE THAT THE DIR TO STORE RUNNING CONFIGS EXITS
+  file:
+    path: "{{ role_path }}/files/running_configs"
+    state: directory
+    mode: 0755
+  delegate_to: localhost
+  run_once: yes
+
+- name: GET THE RUNNING CONFIG
+  include_tasks: "{{ ansible_network_os }}.yml"

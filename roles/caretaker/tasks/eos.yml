@@ -1,0 +1,22 @@
+---
+- name: "eos.backup: fetch network configuration"
+  eos_config:
+    backup: "true"
+    dir_path: "{{ role_path }}/files/running_config/{{ inventory_hostname }}"
+    filename: running.cfg
+  register: r_eos_config
+
+- name: "eos.backup: remove non configuration lines"
+  changed_when: false
+  lineinfile:
+    path: "{{ r_eos_config.backup_path }}"
+    regexp: "{{ item }}"
+    state: "absent"
+  loop:
+    - '^\!.*'
+
+# - name: "eos.backup: save configuration to git_store"
+#   copy:
+#     src: "{{ role_path }}/files/running_config/{{ r_eos_config.backup_path }}"
+#     dest: "/running.cfg"
+#     force: "yes"
