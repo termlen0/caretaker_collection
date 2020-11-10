@@ -2,8 +2,9 @@
 - name: "eos.backup: fetch network configuration"
   eos_config:
     backup: "true"
-    dir_path: "{{ role_path }}/files/running_config/{{ inventory_hostname }}"
-    filename: running.cfg
+    backup_options:
+      dir_path: "{{ role_path }}/files/running_config/{{ inventory_hostname }}"
+      filename: running.cfg
   register: r_eos_config
 
 - name: "eos.backup: remove non configuration lines"

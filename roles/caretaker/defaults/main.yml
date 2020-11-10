@@ -1,1 +1,3 @@
 sot_repo: https://github.com/termlen0/test-github-push
+running: "{{ role_path }}/files/running_configs/{{ inventory_hostname }}/running.cfg"
+archived: "{{ role_path }}/files/archived_configs/{{ inventory_hostname }}/config/running.cfg"

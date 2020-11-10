@@ -1,0 +1,5 @@
+---
+- name: Push device configs
+  eos_config:
+    replace:
+      config: "roles/caretaker/files/archived_configs/{{ inventory_hostname }}/config/running.cfg"

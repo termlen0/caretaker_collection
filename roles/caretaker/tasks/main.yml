@@ -28,3 +28,25 @@
 
 - name: GET THE RUNNING CONFIG
   include_tasks: "{{ ansible_network_os }}.yml"
+
+#### Check for differences
+- name: CHECK IF OOB CHANGES EXIST
+  command: >-
+    diff "{{ running }} {{ archived }}"
+  register: difference
+  failed_when: difference.rc > 1
+  changed_when: difference.rc == 1
+  delegate_to: localhost
+  run_once: true
+
+- name: DISPLAY DIFFERENCES
+  debug:
+    var: difference.stdout
+  when: difference.rc != 0
+  delegate_to: localhost
+  run_once: true
+
+- name: FAIL IF THERE ARE DIFFERENCES
+  fail:
+    msg: "Running configs do not match the source of truth!"
+  when: difference.rc != 0
