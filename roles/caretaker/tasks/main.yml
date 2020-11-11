@@ -14,6 +14,7 @@
     repo: "{{ sot_repo }}"
     clone: yes
     dest: "{{ role_path }}/files/archived_configs"
+    key_file: "{{ secret_key }}" #Passed in from Tower git creds
   delegate_to: localhost
   run_once: yes
 
