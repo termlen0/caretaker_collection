@@ -6,7 +6,7 @@
     path: "/archived_configs"
     state: directory
     mode: 0777
-  delegate_to: localhost
+  delegate_to: ansible-1
   run_once: yes
   become: yes
 
@@ -14,7 +14,7 @@
   git:
     repo: "{{ sot_repo }}"
     clone: yes
-    dest: "{{ role_path }}/files/archived_configs"
+    dest: "/archived_configs"
     key_file: "{{ secret_key }}" #Passed in from Tower git creds
     accept_hostkey: true
   delegate_to: localhost
@@ -26,7 +26,7 @@
     path: "/running_configs"
     state: directory
     mode: 0777
-  delegate_to: localhost
+  delegate_to: ansible-1
   run_once: yes
   become: yes
 

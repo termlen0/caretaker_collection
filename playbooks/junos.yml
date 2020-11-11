@@ -1,0 +1,4 @@
+---
+- name: JUNOS devices
+  debug:
+    msg: "{{ inventory_hostname }} is not within scope"
