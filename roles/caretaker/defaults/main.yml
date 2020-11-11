@@ -1,3 +1,3 @@
-sot_repo: git@github.com:termlen0/test-github-push
+sot_repo: git@github.com:termlen0/test-github-push.git
 running: "{{ role_path }}/files/running_configs/{{ inventory_hostname }}/running.cfg"
 archived: "{{ role_path }}/files/archived_configs/{{ inventory_hostname }}/config/running.cfg"
