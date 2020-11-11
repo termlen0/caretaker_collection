@@ -34,7 +34,7 @@
 #### Check for differences
 - name: CHECK IF OOB CHANGES EXIST
   command: >-
-    diff "{{ running }} {{ archived }}"
+    diff "{{ running }}"  "{{ archived }}"
   register: difference
   failed_when: difference.rc > 1
   changed_when: difference.rc == 1
