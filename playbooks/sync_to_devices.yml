@@ -5,3 +5,4 @@
   tasks:
     - name: Include the appropriate network devices
       include_tasks: "{{ ansible_network_os }}.yml"
+      ignore_errors: yes
