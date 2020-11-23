@@ -45,7 +45,7 @@ tags: [ios, eos, network, gitops, netdevops]
 #  "ansible.builtin": "*"
 
 # The URL of the originating SCM repository
-repository: http://example.com/repository
+repository: https://github.com/termlen0/caretaker_collection
 
 # The URL to any online docs
 documentation: http://docs.example.com
