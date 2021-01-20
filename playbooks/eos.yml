@@ -1,4 +1,14 @@
 ---
+- name: GATHER THE ARCHIVED CONFIGS
+  git:
+    repo: "{{ sot_repo }}"
+    clone: yes
+    dest: "/archived_configs"
+    key_file: "{{ secret_key }}" #Passed in from Tower git creds
+    accept_hostkey: true
+  delegate_to: localhost
+  run_once: yes
+
 - name: Push device configs
   eos_config:
     replace: config

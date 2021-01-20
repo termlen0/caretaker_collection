@@ -2,7 +2,10 @@
 - name: Sync to devices
   hosts: all
   gather_facts: no
+  vars:
+    sot_repo: "git@github.com:termlen0/caretaker-sot.git"
+
   tasks:
     - name: Include the appropriate network devices
       include_tasks: "{{ ansible_network_os }}.yml"
-      ignore_errors: yes
+      failed_when: false
